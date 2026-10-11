@@ -1,5 +1,9 @@
 package com.kirill;
 
+import com.kirill.absfactory.Button;
+import com.kirill.absfactory.Checkbox;
+import com.kirill.absfactory.GUIFactory;
+import com.kirill.absfactory.WindowsFactory;
 import com.kirill.builder.Car;
 import com.kirill.builder.Computer;
 import com.kirill.factory.Notification;
@@ -26,11 +30,11 @@ public class Main {
 //                .build();
 //        System.out.println(car);
 
-        Notification notification =
-                NotificationFactory.createNotification("SMS");
-
-        notification.send();
-    }
+//        Notification notification =
+//                NotificationFactory.createNotification("SMS");
+//
+//        notification.send();
+//    }
 
 // public class Main {
 //    public static void main(String[] args) {
@@ -51,4 +55,12 @@ public class Main {
 //    }
 // }
 
+        GUIFactory factory = new WindowsFactory();
+
+        Button button = factory.createButton();
+        Checkbox checkbox = factory.createCheckbox();
+
+        button.paint();
+        checkbox.paint();
+    }
 }
