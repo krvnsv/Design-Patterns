@@ -8,6 +8,7 @@ import com.kirill.builder.Car;
 import com.kirill.builder.Computer;
 import com.kirill.factory.Notification;
 import com.kirill.factory.NotificationFactory;
+import com.kirill.prototype.Character;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -55,12 +56,33 @@ public class Main {
 //    }
 // }
 
-        GUIFactory factory = new WindowsFactory();
+//        GUIFactory factory = new WindowsFactory();
+//
+//        Button button = factory.createButton();
+//        Checkbox checkbox = factory.createCheckbox();
+//
+//        button.paint();
+//        checkbox.paint();
 
-        Button button = factory.createButton();
-        Checkbox checkbox = factory.createCheckbox();
+        Character original =
+                new Character(
+                        "Zombie",
+                        100,
+                        50,
+                        20
+                );
 
-        button.paint();
-        checkbox.paint();
+        Character copy = original.copy();
+
+        copy.setName("Zombie 2");
+        copy.setHealth(150);
+
+        System.out.println("Original: ");
+        System.out.println(original);
+
+        System.out.println();
+
+        System.out.println("Copy: ");
+        System.out.println(copy);
     }
 }
