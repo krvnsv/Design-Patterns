@@ -4,6 +4,9 @@ import com.kirill.absfactory.Button;
 import com.kirill.absfactory.Checkbox;
 import com.kirill.absfactory.GUIFactory;
 import com.kirill.absfactory.WindowsFactory;
+import com.kirill.adapter.LegacyPaymentAdapter;
+import com.kirill.adapter.LegacyPaymentSystem;
+import com.kirill.adapter.PaymentProcessor;
 import com.kirill.builder.Car;
 import com.kirill.builder.Computer;
 import com.kirill.factory.Notification;
@@ -37,7 +40,7 @@ public class Main {
 //        notification.send();
 //    }
 
-// public class Main {
+//  public class Main {
 //    public static void main(String[] args) {
 
 //        String type = "EMAIL";
@@ -64,25 +67,31 @@ public class Main {
 //        button.paint();
 //        checkbox.paint();
 
-        Character original =
-                new Character(
-                        "Zombie",
-                        100,
-                        50,
-                        20
-                );
+//        Character original =
+//                new Character(
+//                        "Zombie",
+//                        100,
+//                        50,
+//                        20
+//                );
+//
+//        Character copy = original.copy();
+//
+//        copy.setName("Zombie 2");
+//        copy.setHealth(150);
+//
+//        System.out.println("Original: ");
+//        System.out.println(original);
+//
+//        System.out.println();
+//
+//        System.out.println("Copy: ");
+//        System.out.println(copy);
 
-        Character copy = original.copy();
+        LegacyPaymentSystem legacySystem = new LegacyPaymentSystem();
 
-        copy.setName("Zombie 2");
-        copy.setHealth(150);
+        PaymentProcessor processor = new LegacyPaymentAdapter(legacySystem);
 
-        System.out.println("Original: ");
-        System.out.println(original);
-
-        System.out.println();
-
-        System.out.println("Copy: ");
-        System.out.println(copy);
+        processor.pay(99.99);
     }
 }
