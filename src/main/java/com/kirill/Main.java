@@ -9,6 +9,10 @@ import com.kirill.adapter.LegacyPaymentSystem;
 import com.kirill.adapter.PaymentProcessor;
 import com.kirill.builder.Car;
 import com.kirill.builder.Computer;
+import com.kirill.decorator.CaramelDecorator;
+import com.kirill.decorator.Coffee;
+import com.kirill.decorator.MilkDecorator;
+import com.kirill.decorator.SimpleCoffee;
 import com.kirill.factory.Notification;
 import com.kirill.factory.NotificationFactory;
 import com.kirill.prototype.Character;
@@ -88,10 +92,30 @@ public class Main {
 //        System.out.println("Copy: ");
 //        System.out.println(copy);
 
-        LegacyPaymentSystem legacySystem = new LegacyPaymentSystem();
+//        LegacyPaymentSystem legacySystem = new LegacyPaymentSystem();
+//
+//        PaymentProcessor processor = new LegacyPaymentAdapter(legacySystem);
+//
+//        processor.pay(99.99);
 
-        PaymentProcessor processor = new LegacyPaymentAdapter(legacySystem);
+        Coffee coffee = new SimpleCoffee();
 
-        processor.pay(99.99);
+        System.out.println(
+                coffee.getDescription()
+                        + " = "
+                        + coffee.getCost()
+        );
+
+        coffee = new MilkDecorator(coffee);
+        coffee = new MilkDecorator(coffee);
+        coffee = new CaramelDecorator(coffee);
+        //coffee = new WhippedCreamDecorator(coffee);
+
+        System.out.println(
+                coffee.getDescription()
+                        + " = "
+                        + coffee.getCost()
+        );
+
     }
 }
