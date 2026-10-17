@@ -13,6 +13,7 @@ import com.kirill.decorator.CaramelDecorator;
 import com.kirill.decorator.Coffee;
 import com.kirill.decorator.MilkDecorator;
 import com.kirill.decorator.SimpleCoffee;
+import com.kirill.facade.*;
 import com.kirill.factory.Notification;
 import com.kirill.factory.NotificationFactory;
 import com.kirill.prototype.Character;
@@ -43,9 +44,6 @@ public class Main {
 //
 //        notification.send();
 //    }
-
-//  public class Main {
-//    public static void main(String[] args) {
 
 //        String type = "EMAIL";
 
@@ -98,24 +96,46 @@ public class Main {
 //
 //        processor.pay(99.99);
 
-        Coffee coffee = new SimpleCoffee();
+//        Coffee coffee = new SimpleCoffee();
+//
+//        System.out.println(
+//                coffee.getDescription()
+//                        + " = "
+//                        + coffee.getCost()
+//        );
+//
+//        coffee = new MilkDecorator(coffee);
+//        coffee = new MilkDecorator(coffee);
+//        coffee = new CaramelDecorator(coffee);
+//        //coffee = new WhippedCreamDecorator(coffee);
+//
+//        System.out.println(
+//                coffee.getDescription()
+//                        + " = "
+//                        + coffee.getCost()
+//        );
 
-        System.out.println(
-                coffee.getDescription()
-                        + " = "
-                        + coffee.getCost()
-        );
+        TV tv = new TV();
 
-        coffee = new MilkDecorator(coffee);
-        coffee = new MilkDecorator(coffee);
-        coffee = new CaramelDecorator(coffee);
-        //coffee = new WhippedCreamDecorator(coffee);
+        SoundSystem soundSystem = new SoundSystem();
 
-        System.out.println(
-                coffee.getDescription()
-                        + " = "
-                        + coffee.getCost()
-        );
+        StreamingDevice streamingDevice = new StreamingDevice();
+
+        Lights lights = new Lights();
+
+        HomeTheatherFacade homeTheather =
+                new HomeTheatherFacade(
+                        tv,
+                        soundSystem,
+                        streamingDevice,
+                        lights
+                );
+
+        homeTheather.watchMovie("Interstellar");
+
+        System.out.println();
+
+        homeTheather.endMovie();
 
     }
 }
