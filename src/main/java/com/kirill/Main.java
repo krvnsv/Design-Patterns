@@ -17,6 +17,8 @@ import com.kirill.facade.*;
 import com.kirill.factory.Notification;
 import com.kirill.factory.NotificationFactory;
 import com.kirill.prototype.Character;
+import com.kirill.proxy.Image;
+import com.kirill.proxy.ImageProxy;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -115,27 +117,40 @@ public class Main {
 //                        + coffee.getCost()
 //        );
 
-        TV tv = new TV();
+//        TV tv = new TV();
+//
+//        SoundSystem soundSystem = new SoundSystem();
+//
+//        StreamingDevice streamingDevice = new StreamingDevice();
+//
+//        Lights lights = new Lights();
+//
+//        HomeTheatherFacade homeTheather =
+//                new HomeTheatherFacade(
+//                        tv,
+//                        soundSystem,
+//                        streamingDevice,
+//                        lights
+//                );
+//
+//        homeTheather.watchMovie("Interstellar");
+//
+//        System.out.println();
+//
+//        homeTheather.endMovie();
 
-        SoundSystem soundSystem = new SoundSystem();
 
-        StreamingDevice streamingDevice = new StreamingDevice();
+        Image image = new ImageProxy("photo.jpg");
 
-        Lights lights = new Lights();
+        System.out.println("Proxy created");
 
-        HomeTheatherFacade homeTheather =
-                new HomeTheatherFacade(
-                        tv,
-                        soundSystem,
-                        streamingDevice,
-                        lights
-                );
-
-        homeTheather.watchMovie("Interstellar");
+        System.out.println("Image has not been loaded yet");
 
         System.out.println();
 
-        homeTheather.endMovie();
+        image.display();
+        System.out.println();
+        image.display();
 
     }
 }
